@@ -19,6 +19,9 @@ Setup Description
 * Window manager `i3-gaps`
 
 
-[GNU stow]: https://www.gnu.org/s/stow/manual/stow.html
+[GNU stow](https://www.gnu.org/s/stow/manual/stow.html)
+
+
+[Idee copied from Mohabaks' dotfiles](https://github.com/mohabaks/dotfiles)
 
 
