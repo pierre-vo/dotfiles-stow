@@ -4,7 +4,7 @@
 foreground = #839496
 foreground_bold = #eee8d5
 #foreground_dim = #888888
-background = rgba(0, 43, 54, 0.95) 
+background = rgba(0, 43, 54, 0.9) 
 #002b36
 cursor = #93a1a1
 
