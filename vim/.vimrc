@@ -1,3 +1,4 @@
+" https://www.vi-improved.org/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Be iMproved
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -30,11 +31,16 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " http://vimawesome.com/
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
-NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tpope/vim-sensible'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ludovicchabant/vim-gutentags'
+NeoBundle 'tommcdo/vim-lion'
+
 NeoBundle 'mhinz/vim-startify'
-"NeoBundle 'tpope/vim-unimpaired'
-"NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'altercation/vim-colors-solarized'
 "NeoBundle 'scrooloose/syntastic'
+"NeoBundle 'tpope/vim-unimpaired'
 "NeoBundle 'majutsushi/tagbar'
 "NeoBundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 
@@ -91,7 +97,7 @@ set foldmethod=indent
 set foldlevel=99
 
 " Height of the command bar
-set cmdheight=2
+set cmdheight=1
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -166,7 +172,13 @@ set ffs=unix,dos,mac
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
 set nobackup
 set nowb
-set noswapfile
+
+"set noswapfile
+set backupdir=~/.vim/swp_files
+set directory=~/.vim/swp_files
+
+set undofile
+set undodir=~/.vim/undodir
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -185,8 +197,8 @@ set tabstop=4
 set lbr
 set tw=500
 
-set ai "Auto indent
-set si "Smart indent
+set ai   "Auto indent
+set si   "Smart indent
 set wrap "Wrap lines
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -214,9 +226,26 @@ set viminfo^=%
 set laststatus=2
 
 " Format the status line
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+"set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=%F%m%r%h\ %w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+"              | | | | |  |   |      |  |     |    |
+"              | | | | |  |   |      |  |     |    +-- current column
+"              | | | | |  |   |      |  |     +-- current line
+"              | | | | |  |   |      |  +-- current % into file
+"              | | | | |  |   |      +-- current syntax
+"              | | | | |  |   +-- current fileformat
+"              | | | | |  +-- number of lines
+"              | | | | +-- preview flag in square brackets
+"              | | | +-- help flag in square brackets
+"              | | +-- readonly flag in square brackets
+"              | +-- rodified flag in square brackets
+"              +-- full path to file in the buffer
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=\ %{gutentags#statusline()}
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
