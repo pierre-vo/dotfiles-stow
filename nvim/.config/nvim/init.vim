@@ -60,8 +60,8 @@ set hlsearch
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set termguicolors
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"set termguicolors
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 
 " default value is "normal", Setting this option to "high" or "low" does use the 
