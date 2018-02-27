@@ -1,0 +1,13 @@
+! ------------------------------------------------------------------------------
+! ROFI 
+! ------------------------------------------------------------------------------
+
+rofi.color-enabled: true
+rofi.width: 20
+rofi.font: curie 12
+rofi.location: 1
+rofi.yoffset: 26
+rofi.xoffset: 1540 
+rofi.padding: 40
+rofi.lines: 5
+rofi.seperator-style:none
