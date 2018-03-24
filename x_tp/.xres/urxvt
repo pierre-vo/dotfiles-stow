@@ -4,11 +4,13 @@
 
 URxvt.depth:                      32
 URxvt.geometry:                   70x40
-URxvt.background:                 [80]#000000
+! URxvt.background:                 [80]#000000
+URxvt.background:                 [80]#002B36
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
 URxvt*saveLines:                  5000
 URxvt*termName:                   rxvt-256color
+! URxvt*termName:                   rxvt-unicode
 
 URxvt*perl-ext-common:            default,clipboard
 URxvt*copyCommand:                xclip -i -selection clipboard
