@@ -20,6 +20,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'iCyMind/NeoSolarized'
 Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux'
+Plug 'PotatoesMaster/i3-vim-syntax'
 
 " Initialize plugin system
 call plug#end()
