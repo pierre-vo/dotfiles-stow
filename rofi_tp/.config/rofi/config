@@ -1,0 +1,17 @@
+
+rofi.modi: window,run
+rofi.bw: 3
+rofi.width: 800
+rofi.lines: 5
+rofi.columns: 1
+rofi.eh: 2
+rofi.terminal: termite 
+rofi.case-sensitive: false
+rofi.hide-scrollbar: true
+rofi.show-icons: true
+rofi.scroll-method: 1
+
+
+rofi.theme: /usr/share/rofi/themes/solarized_alternate.rasi
+
+! vim:ft=xdefaults
