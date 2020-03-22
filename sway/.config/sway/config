@@ -15,16 +15,20 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term alacritty
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | bemenu-run | xargs swaymsg exec --
-set $menu j4-dmenu-desktop --dmenu=bemenu-run --term='alacritty'
+#set $menu j4-dmenu-desktop --dmenu=bemenu-run --term='alacritty'
+set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/pierre/Images/Wallpapers/Solarized_wheel.png fill
+
 #
 # Example configuration:
 #
@@ -38,7 +42,7 @@ gaps outer -3
 
 default_border none
 
-exec --no-startup-id pulseaudio --start
+# exec --no-startup-id pulseaudio --start
 exec --no-startup-id mako
 exec --no-startup-id redshift -m wayland
 
@@ -55,6 +59,11 @@ exec --no-startup-id redshift -m wayland
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 60 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 
 ### Input configuration
 #
@@ -70,6 +79,33 @@ exec --no-startup-id redshift -m wayland
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    #left_handed enabled
+    tap enabled
+    natural_scroll enabled
+    #natural_scroll disabled
+    click_method clickfinger
+    dwt enabled
+    #pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
+}
+
+#input "1739:0:Synaptics_TM2749-001" {
+input type:touchpad {
+    #left_handed enabled
+    tap enabled
+    natural_scroll enabled
+    #natural_scroll disabled
+    click_method clickfinger
+    dwt enabled
+    #pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
+}
+
+input type:keyboard { 
+    xkb_layout us(intl)
+    #xkb_variant ,nodeadkeys
+    #xkb_options grp:alt_shift_toggle
+}
+
 ### Key bindings
 #
 # Basics:
@@ -82,6 +118,21 @@ exec --no-startup-id redshift -m wayland
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    
+    bindsym $mod+F2 exec firefox
+
+    # Set program location
+    set $alacritty_colorscheme ~/.local/bin/alacritty-colorscheme
+    set $alacritty_themes ~/Prog/alacritty-theme/themes
+
+    # Toggle between light and dark colorscheme
+    bindsym $mod+Shift+n exec $alacritty_colorscheme -C $alacritty_themes -t solarized_light.yaml solarized_dark.yaml
+
+    # Toggle between all available colorscheme
+    bindsym $mod+Shift+m exec $alacritty_colorscheme -C $alacritty_themes -T
+
+    # Get notification with current colorscheme
+    bindsym $mod+Shift+b exec notify-send "Alacritty Colorscheme" `$alacritty_colorscheme -s`
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -208,6 +259,8 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+include "$HOME/.cache/wal/colors-sway"
+
 #
 # Status Bar:
 #
@@ -237,26 +290,7 @@ bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-input "2:7:SynPS/2_Synaptics_TouchPad" {
-    #left_handed enabled
-    tap enabled
-    natural_scroll enabled
-    #natural_scroll disabled
-    click_method clickfinger
-    dwt enabled
-    #pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
-}
-
-input "1739:0:Synaptics_TM2749-001" {
-    #left_handed enabled
-    tap enabled
-    natural_scroll enabled
-    #natural_scroll disabled
-    click_method clickfinger
-    dwt enabled
-    #pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
-}
-
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 include /etc/sway/config.d/*
