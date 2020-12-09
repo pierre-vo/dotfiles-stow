@@ -42,9 +42,12 @@ gaps outer -3
 
 default_border none
 
+exec wl-paste -t text --watch clipman store --notify
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 # exec --no-startup-id pulseaudio --start
-exec --no-startup-id mako
-exec --no-startup-id redshift -m wayland
+exec mako
+exec redshift -m wayland
+exec kanshi
 
 ### Idle configuration
 #
@@ -60,8 +63,8 @@ exec --no-startup-id redshift -m wayland
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-         timeout 300 'swaylock -f -c 000000' \
-         timeout 60 'swaymsg "output * dpms off"' \
+         timeout 900 'swaylock -f -c 000000' \
+         timeout 901 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 
@@ -120,6 +123,9 @@ input type:keyboard {
     bindsym $mod+d exec $menu
     
     bindsym $mod+F2 exec firefox
+
+    # clipboard
+    bindsym $mod+n exec clipman pick -t wofi
 
     # Set program location
     set $alacritty_colorscheme ~/.local/bin/alacritty-colorscheme
@@ -292,5 +298,19 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
+
+# Screen modes. Note mirroring is not yet properly supported by sway :(
+set $mode_display AUX SCREEN: (l) LEFT (r) RIGHT (o) OFF (m) MIRROR
+mode "$mode_display" {
+    bindsym l output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos -$native_width 0, mode "default"
+    bindsym r output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos $native_width 0, mode "default"
+    bindsym m output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos 0 0, mode "default"
+    bindsym o output $scr_aux disable, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+x mode "$mode_display"
 
 include /etc/sway/config.d/*

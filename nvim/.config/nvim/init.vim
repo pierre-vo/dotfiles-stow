@@ -18,6 +18,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "Plug 'tpope/vim-fugitive'
 Plug 'iCyMind/NeoSolarized'
+Plug 'dylanaraps/wal.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'benmills/vimux'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -86,6 +87,7 @@ let g:neosolarized_underline = 1
 let g:neosolarized_italic = 0
 
 colorscheme NeoSolarized
+"colorscheme wal
 
 " Makes the background transparent. Leave these out if you're not using a transparent
 " terminal.
