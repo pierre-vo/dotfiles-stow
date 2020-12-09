@@ -83,3 +83,7 @@ alias pss="ps -A | grep"
 
 alias hyprestart="sudo service hyperion restart"
 
+alias weather="curl wttr.in"
+alias rain="curl v2.wttr.in"
+
+
