@@ -13,7 +13,8 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:System San Fransisco Display 9
+#font pango:System San Fransisco Display 9
+font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,8 +31,9 @@ font pango:System San Fransisco Display 9
 floating_modifier $mod
 
 # start a terminal
-# bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec urxvt
+#bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -175,7 +177,7 @@ for_window [class="^.*"] border pixel 1
 smart_gaps on
 smart_borders no_gaps
 
-gaps inner 18
+gaps inner 5
 gaps outer 0
 
 
@@ -234,9 +236,10 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Set wallpaper
 #exec_always feh --bg-scale /home/pierre/Pictures/Daft_Fiction_by_Apasun.jpg
-exec_always feh --bg-scale /home/pierre/Pictures/nitish-meena-37745.jpg
-# Set screen prop
-exec_always --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --off --output DVI-I-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
+exec_always feh --bg-scale /home/pierre/Pictures/Wallpapers/Wallpaper_solarized_arch.png
+# Set screen jrop
+#exec_always --no-startup-id rrandr --output DVI-D-0 --off --output HDMI-0 --off --output DVI-I-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
+exec_always --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --off --output DP-0 --primary --mode 3440x1440 --pos 0x0 --rate 144 --rotate normal --output DP-1 --off
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id compton -b
 exec --no-startup-id redshift
