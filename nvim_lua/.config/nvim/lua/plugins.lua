@@ -21,6 +21,50 @@ return require('packer').startup(function()
     "ishan9299/nvim-solarized-lua",
     -- config = function() cmd('colorscheme solarized-flat') end
   }
+  
+	-- Git
+  use {
+    'lewis6991/gitsigns.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim'
+      },
+      config = function()
+        require('gitsigns').setup()
+      end
+  }
 
+	-- align
+	use {'godlygeek/tabular'; opt = true; cmd = {'Tabularize'}};
+
+	-- syntax files
+	use { 'bfrg/vim-cpp-modern'}
+	use { 'vim-python/python-syntax'}
+
+	-- tpope
+	use {
+		'tpope/vim-commentary';
+		opt = true;
+		keys = {{'n'; 'gcc'}; {'x'; 'gc'}; {'o'; 'gc'}; {'n'; 'gc'}};
+	};
+
+	use {
+		'tpope/vim-unimpaired';
+	};
+
+	use {
+		'tpope/vim-surround';
+		-- opt = true;
+		-- keys = {{'n'; 'yss'}; {'x'; 'S'}; {'o'; 'ys'};{'n'; 'ys'}};
+	};
+	use {
+		 'tpope/vim-rsi',
+		 opt=true ,
+		 event = 'InsertEnter *'
+	};
+	use {
+		'tpope/vim-repeat';
+		-- opt = true;
+		-- keys = {{'n'; '.'}};
+	};
 
 end)
