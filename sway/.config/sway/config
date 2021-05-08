@@ -27,7 +27,7 @@ set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/pierre/Images/Wallpapers/Solarized_wheel.png fill
+output * bg /home/pierre/Images/Wallpapers/Solarized_cron.png fill
 
 #
 # Example configuration:
@@ -123,6 +123,9 @@ input type:keyboard {
     bindsym $mod+d exec $menu
     
     bindsym $mod+F2 exec firefox
+
+    # dismiss notifications
+    bindsym $mod+m exec makoctl dismiss
 
     # clipboard
     bindsym $mod+n exec clipman pick -t wofi
