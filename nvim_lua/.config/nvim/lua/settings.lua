@@ -1,4 +1,3 @@
--- TODO
 local cmd = vim.cmd
 local g = vim.g
 local fn = vim.fn
@@ -6,11 +5,8 @@ local wo = vim.wo
 local bo = vim.bo
 local o = vim.o
 local map = vim.api.nvim_set_keymap
--- local normal_mode_silent = {silent = true, noremap = true}
--- local normal_mode_echo = {silent = false, noremap = true}
 
 cmd('syntax on')
--- g.mapleader = ' ' -- Space as a leader key
 -- Disable builtins plugins
 --g.loaded_netrwPlugin = 1 -- Disable netrw it has problem with symlinks and I am on nixos
 --g.loaded_2html_plugin = 1 -- converts lines or the entire buffer to html code
@@ -35,6 +31,7 @@ o.guicursor = '' -- disable the line cursor
 o.fillchars = 'diff:∙,fold:·,vert:│,eob: ' -- characters used to fill statuslines and seperators
 o.tabstop = 2 -- 4 spaces equals to one tab
 o.shiftwidth = 2 -- number of spaces for each step of autoindent
+--o.undodir = 
 o.undofile = true
 o.expandtab = false
 o.showbreak = "↳  "
@@ -55,6 +52,11 @@ bo.expandtab = false
 bo.textwidth = 120 -- Maximum width of text that is being inserted
 wo.foldenable = false -- no folding
 wo.wrap = false -- dont wrap the lines
+o.backup = false -- no backup file
+o.writebackup = false -- no backup file
+o.swapfile = false -- no swap file
+o.encoding = 'utf-8'
+o.mouse = 'a'
 
 ---------- Plugins ----------
 --cmd('packadd! tabular')
