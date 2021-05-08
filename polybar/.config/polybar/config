@@ -14,10 +14,11 @@
 ;**********************************************************
 [colors]
 ; Base colors from .Xresources
-;bg          =  ${xrdb:background}
+bg          =  ${xrdb:color8}
+bg-alt      =  ${xrdb:fadeColor}
 ;bg-alt      =  #121622
-;fg          =  ${xrdb:foreground}
-;fg-alt      =  ${xrdb:color8}
+fg          =  ${xrdb:foreground}
+fg-alt      =  ${xrdb:cursorColor}
 red         =  ${xrdb:color1}
 red-alt     =  ${xrdb:color9}
 green       =  ${xrdb:color2}
@@ -38,11 +39,17 @@ white-alt   =  ${xrdb:color15}
 primary     =  #FFffb52a
 secondary   =  #FFe60053
 alert       =  #FFd33682
-bg          =  #FF002b36
-bg-alt      =  #FF586e75
-fg          =  #FF839496
-fg-alt      =  #FF93a1a1
+#bg          =  #FF002b36
+#bg-alt      =  #FF586e75
+#fg          =  #FF839496
+#fg-alt      =  #FF93a1a1
 
+[bar]
+fill = ▐
+empty = ▐
+indicator = 
+width = 10
+; Nerd font :   ,  ⏽⏽,  樂 籠 錄 , 雷 絛, ▐
 
 [bar/top]
 monitor   = ${env:MONITOR:DP-0}
@@ -69,19 +76,19 @@ padding-right = 3
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = System San Fransisco Display:antialia=true:pixelsize=10;3
-font-1 = fontawesome:antialia=false:size=12;3
-font-2 = MaterialIcons:antialia=false:size=12;5
-font-3 = Material:antialia=false:size=12;5
+font-0 = Source Code Pro:style=Regular:antialia=true:size=12;3
+font-1 = Noto Sans Display:style=Regular:antialia=true:pixelsize=12;3
+font-2 = Symbols Nerd Font:antialia=true:size=12;5
+font-3 = Symbols Nerd Font:antialia=false:size=12;5
 
 modules-left = i3
 modules-center = xwindow
-modules-right = filesystem volume memory cpu temperature date powermenu
+modules-right = memory cpu date powermenu
 
-tray-position = left 
+tray-position = right 
 tray-detached = false
-tray-padding = 1
-tray-transparent = false
+tray-padding = 10
+;tray-transparent = false
 tray-background = #002b36
 tray-scale = 1.0
 tray-offset-x = 0
@@ -106,8 +113,8 @@ label-unmounted-foreground = ${colors.fg-alt}
 [module/i3]
 type = internal/i3
 ;ws-icon-[0-9]+ = label;icon
-ws-icon-0 = 1;
-ws-icon-1 = 2;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
 ws-icon-2 = 3;
 ws-icon-3 = 4;
 ws-icon-4 = 5;
@@ -118,7 +125,7 @@ ws-icon-8 = 9;
 ws-icon-9 = 10;
 ;ws-icon-default = 
 
-strip-wsnumbers = true
+strip-wsnumbers = true 
 ;format = <label-state> <label-mode>
 ;index-sort = true
 ;wrapping-scroll = false
@@ -217,7 +224,7 @@ ramp-coreload-5 = ▆
 ramp-coreload-6 = ▇
 ramp-coreload-7 = █
 
-[module/memory]
+[module/memory2]
 type = internal/memory
 interval = 2
 ;format-prefix = " "
@@ -225,6 +232,33 @@ format-prefix = " "
 format-prefix-foreground = ${colors.fg-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+;format-prefix = " "
+format-prefix = " "
+format-prefix-foreground = ${colors.fg-alt}
+format-underline = #4bffdc
+#label = %percentage_used%%
+label = 
+format = <label> <bar-used>
+
+bar-used-indicator =
+bar-used-width = ${bar.width}
+#bar-used-foreground-0 = #55aa55
+#bar-used-foreground-1 = #557755
+#bar-used-foreground-2 = #f5a70a
+#bar-used-foreground-3 = #ff5555
+bar-used-foreground-0 = ${colors.green} 
+bar-used-foreground-1 = ${colors.green}
+bar-used-foreground-2 = ${colors.yellow}
+bar-used-foreground-3 = ${colors.red}
+bar-used-fill = ${bar.fill}
+bar-used-empty = ${bar.empty}
+#bar-used-empty-foreground = #444444
+bar-used-empty-foreground = ${colors.bg-alt}
+
 
 [module/wlan]
 type = internal/network
