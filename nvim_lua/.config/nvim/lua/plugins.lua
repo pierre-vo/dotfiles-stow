@@ -16,6 +16,12 @@ return require('packer').startup(function()
     "nvim-lua/plenary.nvim",
   }
 
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use {
+  'nvim-telescope/telescope.nvim',
+  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
+
   -- Theme
   use {
     "ishan9299/nvim-solarized-lua",
