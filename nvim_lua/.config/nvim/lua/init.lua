@@ -10,4 +10,6 @@ require('plug_lualine')
 --require('plug_galaxyline')
 --require('plug_feline')
 require('plug_gitsigns')
+require('plug_lspconfig')
+--require'lsp_signature'.on_attach()
 
