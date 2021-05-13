@@ -9,4 +9,5 @@ require('plug_which-key')
 require('plug_lualine')
 --require('plug_galaxyline')
 --require('plug_feline')
+require('plug_gitsigns')
 
