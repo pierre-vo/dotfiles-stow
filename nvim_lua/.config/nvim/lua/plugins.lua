@@ -53,9 +53,9 @@ return require('packer').startup(function()
 		keys = {{'n'; 'gcc'}; {'x'; 'gc'}; {'o'; 'gc'}; {'n'; 'gc'}};
 	};
 
-	use {
-		'tpope/vim-unimpaired';
-	};
+	--use {
+	--	'tpope/vim-unimpaired';
+	--};
 
 	use {
 		'tpope/vim-surround';
@@ -73,4 +73,9 @@ return require('packer').startup(function()
 		-- keys = {{'n'; '.'}};
 	};
 
+  -- Misc
+	use { 'folke/which-key.nvim' }
+	use { 'kyazdani42/nvim-tree.lua', requires = {{'kyazdani42/nvim-web-devicons'}, }}  
+  use { 'hoob3rt/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
+  --use { 'glepnir/galaxyline.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 end)
