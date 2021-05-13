@@ -16,6 +16,9 @@ return require('packer').startup(function()
     "nvim-lua/plenary.nvim",
   }
 
+  use { 'neovim/nvim-lspconfig' }
+  --use { 'ray-x/lsp_signature.nvim' }
+
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use {
   'nvim-telescope/telescope.nvim',
