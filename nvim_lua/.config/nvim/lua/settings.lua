@@ -22,20 +22,25 @@ g.loaded_ruby_provider = 0 -- disable the ruby health checks
 g.loaded_perl_provider = 0 -- disable the perl health checks
 g.loaded_node_provider = 0 -- disable the node health checks
 ---------------------------
-o.scrolloff = 10 -- minimal number of lines to keep above and below the cursor
+o.scrolloff = 5 -- minimal number of lines to keep above and below the cursor
 o.lazyredraw = true -- don't redraw screen when using macros
 --o.laststatus = 1 -- only show the statusline when a split exists
 o.hidden = true -- allow us to switch buffers easily
 o.termguicolors = true -- 24-bit RGB in terminal
 o.guicursor = '' -- disable the line cursor
+wo.signcolumn = 'yes' -- always show symbol gutter
 o.fillchars = 'diff:∙,fold:·,vert:│,eob: ' -- characters used to fill statuslines and seperators
-o.tabstop = 2 -- 4 spaces equals to one tab
+--o.tabstop = 2 -- 4 spaces equals to one tab
 o.shiftwidth = 2 -- number of spaces for each step of autoindent
 --o.undodir = 
 o.undofile = true
 o.expandtab = false
 o.showbreak = "↳  "
 o.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
+g.hlsearch = true
+g.incsearch = true
+g.ignorecase = true
+g.smarcase = true -- search case insensitive until captial letter is used
 -- Ignore these files
 local ignore = o.wildignore
 ignore = ignore .. '*.o,*.obj,*.bin,*.dll,*.exe,'
@@ -47,16 +52,22 @@ o.wildignore = ignore -- Ignore certain files and folders when globbing
 ---------------------
 bo.synmaxcol = 500 -- syntax highlighting for 500 colums only
 bo.tabstop = 2 -- 4 spaces equals to one tab
+bo.softtabstop = 2
 bo.shiftwidth = 2 -- number of spaces for each step of autoindent
-bo.expandtab = false
+bo.expandtab = true -- instert spaces when using tab
 bo.textwidth = 120 -- Maximum width of text that is being inserted
-wo.foldenable = false -- no folding
-wo.wrap = false -- dont wrap the lines
+g.foldenable = true -- folding
+g.foldlevelstart = 10
+g.foldnestmax = 10
+wo.wrap = true -- wrap the lines
 o.backup = false -- no backup file
 o.writebackup = false -- no backup file
 o.swapfile = false -- no swap file
 o.encoding = 'utf-8'
 o.mouse = 'a'
+bo.smartindent = true
+bo.autoindent = true
+wo.linebreak = true
 
 ---------- Plugins ----------
 --cmd('packadd! tabular')
