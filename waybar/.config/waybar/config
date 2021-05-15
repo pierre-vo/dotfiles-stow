@@ -22,11 +22,9 @@
     "sway/window": {
         "max-length": 50,
         "rewrite": {
-           //"^(.*) — Mozilla Firefox$": "$1",
-           //"^(.*) — Mozilla Firefox$": "🌎 $1",
-           //"^(.*) - Mozilla Firefox$": "🌎 $1",
-           //"^nvim (.*) (.*)$": " $1 $2",
-           //"^fish (.*)$": " [$1]",
+           "^(.*) — Mozilla Firefox$": "🌎 $1",
+           "^nvim (.*) (.*)$": "<span size=\"larger\"></span> $1 [$2]",
+           "^fish (.*)$": "<span size=\"larger\"></span> [$1]",
         },
     },
     "idle_inhibitor": {
