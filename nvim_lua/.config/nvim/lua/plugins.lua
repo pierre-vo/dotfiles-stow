@@ -49,6 +49,7 @@ return require('packer').startup(function()
 	-- syntax files
 	use { 'bfrg/vim-cpp-modern'}
 	use { 'vim-python/python-syntax'}
+  use {'neoclide/jsonc.vim'}
 
 	-- tpope
 	use {
