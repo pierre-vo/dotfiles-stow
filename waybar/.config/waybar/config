@@ -1,12 +1,13 @@
 {
     "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
+    "height": 34, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery",
+      "clock", "tray"], // "battery#bat2", 
     "sway/workspaces": {
         "disable-scroll": true,
         "persistent_workspaces": {
@@ -16,7 +17,17 @@
         },
     },
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": " <span style=\"italic\">{}</span>"
+    },
+    "sway/window": {
+        "max-length": 50,
+        "rewrite": {
+           //"^(.*) — Mozilla Firefox$": "$1",
+           //"^(.*) — Mozilla Firefox$": "🌎 $1",
+           //"^(.*) - Mozilla Firefox$": "🌎 $1",
+           //"^nvim (.*) (.*)$": " $1 $2",
+           //"^fish (.*)$": " [$1]",
+        },
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -26,7 +37,7 @@
         }
     },
     "tray": {
-        // "icon-size": 21,
+        "icon-size": 20,
         "spacing": 10
     },
     "clock": {
@@ -37,7 +48,7 @@
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false,
-	"on-click-right": "alacritty -e gotop"
+        "on-click-right": "alacritty -e gotop"
     },
     "memory": {
         "format": "{}% "
@@ -46,14 +57,19 @@
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", "", "", ""]
     },
     "backlight": {
-        // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
-        "format-icons": ["", ""]
+        // "device": "acpi_video1", 
+        "format": "{percent}% <span size=\"larger\">{icon}</span>",
+        "format-icons": ["", "", "", ""],
+        //"format-icons": ["", ""],
+        "on-click": "light -S 50",
+        "on-click-middle": "light -S 25",
+        "on-click-right": "light -S 75",
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1",
     },
     "battery": {
         "states": {
@@ -61,16 +77,17 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
+        "format": "{capacity}% <span size=\"larger\">{icon}</span>",
         "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
+        "format-alt": "{power}W / {time} <span size=\"larger\">{icon}</span>",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "design-capacity": false,
     },
     "battery#bat2": {
-        "bat": "BAT2"
+        "bat": "BAT1"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -79,7 +96,8 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
-	"on-click-right": "alacritty -e nmtui"
+        "on-click-right": "alacritty -e nmtui",
+        "tooltip-format": "祝{bandwidthUpOctets} {bandwidthDownOctets}",
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -114,3 +132,4 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     }
 }
+// vim: ft=jsonc
