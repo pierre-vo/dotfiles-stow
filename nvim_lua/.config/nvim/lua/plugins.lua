@@ -16,6 +16,7 @@ return require('packer').startup(function()
     "nvim-lua/plenary.nvim",
   }
 
+  use { 'nvim-lua/completion-nvim'}
   use { 'neovim/nvim-lspconfig' }
   --use { 'ray-x/lsp_signature.nvim' }
 
