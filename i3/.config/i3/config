@@ -93,7 +93,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # Move to scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -172,7 +172,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+t resize set width 1920 px
+bindsym $mod+t resize set width 2560 px
 bindsym $mod+g resize set width 66 ppt
 
 
@@ -184,7 +184,7 @@ for_window [class="^.*"] border pixel 1
 smart_gaps on
 smart_borders no_gaps
 
-gaps inner 5
+gaps inner 6
 gaps outer 0
 
 
