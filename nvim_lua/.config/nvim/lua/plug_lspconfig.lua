@@ -1,6 +1,8 @@
 require'lspconfig'.clangd.setup{}
 --require'lspconfig'.pyright.setup{}
-require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.pyright.setup{
+  --on_attach=require'completion'.on_attach
+}
 
 local system_name
 if vim.fn.has("mac") == 1 then
@@ -19,7 +21,7 @@ local sumneko_root_path = os.getenv("HOME")..'/Scripts/App/lua-language-server'
 local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 
 require'lspconfig'.sumneko_lua.setup {
-  on_attach=require'completion'.on_attach;
+  --on_attach=require'completion'.on_attach;
   cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
   settings = {
     Lua = {

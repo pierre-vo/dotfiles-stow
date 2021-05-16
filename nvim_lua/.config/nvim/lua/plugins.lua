@@ -16,7 +16,8 @@ return require('packer').startup(function()
     "nvim-lua/plenary.nvim",
   }
 
-  use { 'nvim-lua/completion-nvim'}
+  --use { 'nvim-lua/completion-nvim'}
+  use { 'hrsh7th/nvim-compe'}
   use { 'neovim/nvim-lspconfig' }
   --use { 'ray-x/lsp_signature.nvim' }
 
@@ -95,5 +96,6 @@ return require('packer').startup(function()
       }
     end
   }
+  use { 'glepnir/dashboard-nvim', opt = true }
 
 end)
