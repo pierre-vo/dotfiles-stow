@@ -1,8 +1,9 @@
 require'lspconfig'.clangd.setup{}
 --require'lspconfig'.pyright.setup{}
-require'lspconfig'.pyright.setup{
+--[[require'lspconfig'.pyright.setup{
   --on_attach=require'completion'.on_attach
-}
+}]]
+require'lspconfig'.jedi_language_server.setup{}
 
 local system_name
 if vim.fn.has("mac") == 1 then

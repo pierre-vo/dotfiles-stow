@@ -6,6 +6,10 @@ local bo = vim.bo
 local o = vim.o
 local map = vim.api.nvim_set_keymap
 
+-- Set leader early
+vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', {noremap = true, silent = true})
+vim.g.mapleader = ' '
+
 cmd('syntax on')
 -- Disable builtins plugins
 --g.loaded_netrwPlugin = 1 -- Disable netrw it has problem with symlinks and I am on nixos
