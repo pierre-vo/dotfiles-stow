@@ -18,9 +18,7 @@ key_mapper('', '<right>', '<nop>')
 --key_mapper('v', 'JK', '<ESC>')
 --key_mapper('v', 'jK', '<ESC>')
 
-
 -- better indenting
-vim.api.nvim_set_keymap('v', '<', '<gv', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', '>', '>gv', {noremap = true, silent = true})
-
+key_mapper('v', '<', '<gv')
+key_mapper('v', '>', '>gv')
 

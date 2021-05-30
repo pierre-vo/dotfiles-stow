@@ -47,3 +47,27 @@ require('telescope').setup{
     --buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
   }
 }
+
+--[[
+function M.find_files()
+    require('telescope.builtin').find_files({ -- or new custom picker's attach_mappings field:
+        find_command = {'fd', '--type', 'f', '--no-ignore-vcs', '--color=never', '--hidden', '--follow'},
+        prompt_prefix = '📄 '
+    })
+end
+
+function M.git_or_find_files()
+    local results = require('telescope.utils').get_os_command_output({'git', 'rev-parse', '--git-dir'})
+
+    if results[1] then
+        require('telescope.builtin').git_files({ -- or new custom picker's attach_mappings field:
+            prompt_prefix = ' '
+        })
+    else
+        M.find_files()
+    end
+end
+
+-- in vim, call
+-- nnoremap <C-p>      :lua require('myconfig.plugins.telescope').git_or_find_files()<CR>
+]]
