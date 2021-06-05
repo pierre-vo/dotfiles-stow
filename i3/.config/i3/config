@@ -195,11 +195,11 @@ set $inactive-text-color #eee8d5
 set $urgent-bg-color     #d33682
 
 # window colors
-#                       border              background         text                 indicator
-client.focused          $bg-color           $bg-color          $text-color          #6c71c4
-client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #6c71c4
-client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #586e75
-client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #dc322f
+#                       border              background         text                 indicator  child_border
+client.focused          $bg-color           $bg-color          $text-color          #6c71c4    #268bd2
+client.focused_inactive $inactive-bg-color  $inactive-bg-color $inactive-text-color #586e75    
+client.unfocused        $inactive-bg-color  $inactive-bg-color $inactive-text-color #6c71c4    
+client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color          #dc322f    
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)                                                                            
@@ -244,6 +244,8 @@ bindsym XF86AudioPrev exec playerctl previous
 exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id pasystray -t
 
+exec "setxkbmap us -variant alt-intl"
+
 # Set wallpaper
 #exec_always feh --bg-scale /home/pierre/Pictures/Daft_Fiction_by_Apasun.jpg
 exec_always feh --bg-scale /home/pierre/Pictures/Wallpapers/Wallpaper_solarized_arch_uw.png
@@ -251,7 +253,7 @@ exec_always feh --bg-scale /home/pierre/Pictures/Wallpapers/Wallpaper_solarized_
 #exec_always --no-startup-id rrandr --output DVI-D-0 --off --output HDMI-0 --off --output DVI-I-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
 exec_always --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --off --output DP-0 --primary --mode 3440x1440 --pos 0x0 --rate 144 --rotate normal --output DP-1 --off
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id picom -b
+exec --no-startup-id picom -b --experimental-backends
 exec --no-startup-id redshift
 
 
