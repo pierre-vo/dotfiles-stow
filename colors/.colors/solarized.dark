@@ -9,7 +9,7 @@
 
 *background:            [90]S_base03
 *foreground:            S_base0
-*fadeColor:             S_base03
+*fadeColor:             S_base02
 *cursorColor:           S_base1
 *colorUL:               #268bd2
 *pointerColorBackground:S_base01
