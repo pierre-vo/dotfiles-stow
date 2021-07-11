@@ -1,0 +1,62 @@
+!-------------------------------------------------------------------------------
+! URxvt settings
+!-------------------------------------------------------------------------------
+
+URxvt.depth:                      32
+URxvt.geometry:                   70x40
+! URxvt.background:                 [80]#000000
+URxvt.background:                 [80]#002B36
+URxvt*mouseWheelScrollPage:       false
+URxvt*cursorBlink:                true
+URxvt*saveLines:                  5000
+URxvt*termName:                   rxvt-256color
+! URxvt*termName:                   rxvt-unicode
+
+URxvt*perl-ext-common:            default,clipboard
+URxvt*copyCommand:                xclip -i -selection clipboard
+URxvt*pasteCommand:               xclip -o -selection clipboard
+URxvt.keysym.M-c:                 perl:clipboard:copy
+URxvt.keysym.M-v:                 perl:clipboard:paste
+URxvt.keysym.M-C-v:               perl:clipboard:paste_escaped
+URxvt.keysym.M-Escape:            perl:keyboard-select:activate
+
+!URxvt*background:                 black
+!URxvt*foreground:                 grey
+
+
+! Fonts
+URxvt.allow_bold:           true 
+URxvt*font:                 9x15,xft:TerminessTTFNerdFontMono
+
+! alternative font settings with 'terminus':
+!URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
+!URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
+!! terminus names see end of file!
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Add padding
+URxvt.internalBorder: 10
+
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+! for 'fake' transparency (without Compton) uncomment the following three lines
+! URxvt*inheritPixmap:            true
+! URxvt*transparent:              true
+! URxvt*shading:                  138
+
+! other possible settings:
+! Rxvt.perl-ext-common:            ...,clipboard
+! URxvt.keysym.M-C-c:              perl:clipboard:copy
+! URxvt.keysym.M-v:                perl:clipboard:paste
+! URxvt.keysym.M-C-v:              perl:clipboard:paste_escaped
+! URxvt*termName:                  string
+

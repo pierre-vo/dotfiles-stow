@@ -1,0 +1,364 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[colors]
+background = ${xrdb:color8:#222}
+foreground = ${xrdb:color12:#222}
+background-alt = ${xrdb:color0}
+foreground-alt = ${xrdb:color7}
+color0 = ${xrdb:color0}
+color1 = ${xrdb:color1}
+color2 = ${xrdb:color2}
+color3 = ${xrdb:color3}
+color4 = ${xrdb:color4}
+color5 = ${xrdb:color5}
+color6 = ${xrdb:color6}
+color7 = ${xrdb:color7}
+color8 = ${xrdb:color8}
+color9 = ${xrdb:color9}
+color10 = ${xrdb:color10}
+color11 = ${xrdb:color11}
+color12 = ${xrdb:color12}
+color13 = ${xrdb:color13}
+color14 = ${xrdb:color14}
+color15 = ${xrdb:color15}
+
+red     = ${xrdb:color8}
+orange  = ${xrdb:color9}
+yellow  = ${xrdb:color3}
+green   = ${xrdb:color2}
+cyan    = ${xrdb:color6}
+blue    = ${xrdb:color4}
+magenta = ${xrdb:color5}
+brown   = ${xrdb:color7}
+
+primary = ${xrdb:color6}
+secondary = ${xrdb:color2}
+alert = ${xrdb:color5}
+
+[bar/top]
+;monitor = ${env:MONITOR:0}
+width = 100%
+height = 24
+;offset-x = 1%
+;offset-y = 1%
+;radius = 6.0
+fixed-center = false 
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 1
+border-color = #ff353a48
+;border-color = ${colors.foreground}
+
+separator = "%{F#99CB4B16}|%{F-}"
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = xos4 Terminus:antialias=true:pixelsize=14;1
+font-1 = FontAwesome5Free:style=Solid:antialias=true:pixelsize=10;2
+;font-1 = FontAwesome5Brands:style=Solid:antialias=true:pixelsize=10;2
+font-2 = DejaVu Sans Condensed:antialias=true:pixelsize=11;2
+
+modules-left = i3
+modules-center = xwindow
+;date cpu memory cputemp filesystem wlan eth battery1 battery2 volume xkeyboard temperature wlan eth
+modules-right = battery1 battery2 cpu temperature memory date 
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+wm-restack = i3
+
+;override-redirect = true
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#8a8a8a}%mountpoint%%{F-} %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+; Only show workspaces on the same output as the bar
+;pin-workspaces = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.background}
+
+; focused = Active workspace on focused monitor
+label-focused = %index%
+label-focused-foreground = ${colors.foreground-alt}
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-foreground = ${colors.foreground-alt}
+label-visible-background = ${colors.background-alt}
+label-visible-underline = ${colors.primary}
+label-visible-padding = 2
+
+; urgent = Workspace with urgency hint set
+label-urgent = %index%
+label-urgent-foreground = ${colors.alert}
+label-urgent-background = ${colors.foreground-alt}
+label-urgent-underline = ${colors.alert}
+label-urgent-padding = 1
+
+[module/backlight]
+type = internal/xbacklight
+label = %percentage%%  
+
+[module/cpu_simple]
+type = internal/cpu
+interval = 5
+format-prefix = 
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.background}
+label = %percentage%%
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format = <bar-load>
+label = CPU
+
+ramp-load-0 = ▁
+;ramp-load-0-foreground = ${colors.color2}
+ramp-load-1 = ▂
+ramp-load-2 = ▃
+ramp-load-3 = ▄
+ramp-load-4 = ▅
+ramp-load-4-foreground = ${colors.color3}
+ramp-load-5 = ▆
+ramp-load-5-foreground = ${colors.color9}
+ramp-load-6 = ▇
+ramp-load-6-foreground = ${colors.color9}
+ramp-load-7 = █
+ramp-load-7-foreground = ${colors.color1}
+
+
+; Only applies if <bar-load> is used
+bar-load-indicator =
+bar-load-width = 8
+bar-load-foreground-0 = #55aa55
+bar-load-foreground-1 = #557755
+bar-load-foreground-2 = #f5a70a
+bar-load-foreground-3 = #ff5555
+bar-load-fill = ▐
+bar-load-empty = ▐
+bar-load-empty-foreground = #444444
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+format = <bar-used>
+label = RAM %gb_used%/%gb_free%
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 8
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 5.0
+
+format-connected = <label-connected>
+format-connected-underline = ${colors.background}
+label-connected-foreground = ${colors.foreground}
+label-connected = %signal%% %essid%
+format-connected-foreground = ${colors.foreground-alt}
+
+format-disconnected = wifi <label-disconnected>
+;format-disconnected = 
+;format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = [DOWN]
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = [0]
+ramp-signal-1 = [1]
+ramp-signal-2 = [2]
+ramp-signal-3 = [3]
+ramp-signal-4 = [4]
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 5.0
+
+format-connected-underline = #388E3C
+format-connected-prefix = "eth "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+label-connected = %local_ip%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 60
+date = %d.%m.
+date-alt =  %a %d %b   
+time = %H:%M
+time-alt =  %H:%M:%S
+label = %date% %time%
+
+[module/volume]
+type = internal/volume
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+speaker-mixer = Speaker
+headphone-mixer = Headphone
+headphone-id = 24
+mapped = true
+
+format-volume = <ramp-volume>
+;format-muted  = %{T1}🔇%{T-}
+format-muted  = %{T1}X%{T-}
+ramp-volume-0 = %{T1} %{T-}
+ramp-volume-1 = %{T1} %{T-}
+ramp-volume-2 = %{T1} %{T-}
+
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+
+[module/battery1]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+interval = 30
+
+time-format = %H:%M
+
+label-charging = %percentage%%
+;label-discharging = %time% 
+label-discharging = ${self.label-charging} 
+label-full = 
+
+format-charging-prefix = 
+format-charging-prefix-foreground = ${colors.foreground-alt}
+;format-charging = <animation-charging> <label-charging>
+format-charging = [C] <label-charging>
+format-charging-underline = ${colors.blue}
+
+format-discharging-prefix = ${self.format-charging-prefix}
+format-discharging = [D] <label-discharging>
+format-discharging-prefix-foreground = ${colors.foreground-alt}
+format-discharging-underline = ${colors.yellow}
+
+format-full-prefix = ${self.format-charging-prefix}
+format-full = [F]
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${colors.green}
+
+ramp-capacity-0 = [0]
+ramp-capacity-1 = [1]
+ramp-capacity-2 = [2]
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = [%{F#770000}C%{F-}]
+animation-charging-1 = [C]
+;animation-charging-2 = îˆ¸
+animation-charging-foreground = ${colors.foreground}
+animation-charging-framerate = 1000
+
+[module/battery2]
+inherit = module/battery1
+type = internal/battery
+battery = BAT1
+
+[module/temperature]
+type = internal/temperature
+interval = 10
+thermal-zone = 0
+warn-temperature = 60
+
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+
+format = <label>
+format-underline = ${colors.background}
+format-warn = <label-warn>
+format-warn-underline = ${colors.alert}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

@@ -1,0 +1,25 @@
+
+#include "/home/pierre/.colors/solarized.dark"
+#include "/home/pierre/.xres/xft"
+
+!XTerm*background: #2b2b2b
+!XTerm*foreground: #e7e7e7
+XTerm*pointerColor: #16A085
+!XTerm*faceName: Fixed
+XTerm*faceSize: 11
+
+*fading:                          15
+
+Xcursor.theme: xcursor-breeze
+Xcursor.size:                     0
+
+XTerm*background:                 #272827
+XTerm*foreground:                 #fdf6e3
+XTerm*reverseVideo:               on
+XTerm*faceName:                   Terminus:size=11:antialias=true
+XTerm*selectToClipboard:          true
+
+
+#include "/home/pierre/.xres/urxvt"
+
+

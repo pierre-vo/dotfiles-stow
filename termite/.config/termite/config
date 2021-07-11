@@ -1,10 +1,20 @@
+[options]
+#font = Monospace 9
+#font = xos4 Terminus 12px
+#font = DejaVu Sans Mono 11
+#font = Fira Mono 11
+#font = Source Code Pro 11
+#font = URW Gothic:style=Book 11
+#font = TerminessTTF Nerd Font Mono 16px
+#font = Consolas
+
 # Solarized dark color scheme
 
 [colors]
 foreground = #839496
 foreground_bold = #eee8d5
 #foreground_dim = #888888
-background = rgba(0, 43, 54, 0.95) 
+background = rgba(0, 43, 54, 0.9) 
 #002b36
 cursor = #93a1a1
 
@@ -28,3 +38,5 @@ color12 = #839496
 color13 = #6c71c4
 color14 = #93a1a1
 color15 = #fdf6e3
+
+

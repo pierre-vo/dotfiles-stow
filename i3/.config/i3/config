@@ -31,7 +31,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -175,7 +175,7 @@ for_window [class="^.*"] border pixel 1
 smart_gaps on
 smart_borders no_gaps
 
-gaps inner 8
+gaps inner 18
 gaps outer 0
 
 
@@ -194,20 +194,20 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)                                                                            
-bar {
-  	status_command i3blocks -c /home/pierre/.config/i3/i3blocks.conf
+#bar {
+#  	status_command i3blocks -c /home/pierre/.config/i3/i3blocks.conf
 #    status_command i3status                                                                       
 
-    font pango:System San Fransisco Display 9
-	colors {
-		background $bg-color
-	    	separator #757575
+#    font pango:System San Fransisco Display 9
+#	colors {
+#		background $bg-color
+#	    	separator #757575
 		#                  border             background         text
-		focused_workspace  $bg-color          $bg-color          $text-color
-		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
-	}
-}
+#		focused_workspace  $bg-color          $bg-color          $text-color
+#		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#		urgent_workspace   $urgent-bg-color   $urgent-bg-color   $text-color
+#	}
+#}
 
 bindsym $mod+d exec --no-startup-id rofi -show run \
      -theme solarized-alternate \
@@ -233,9 +233,11 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Set wallpaper
-exec_always feh --bg-scale /home/pierre/Pictures/Daft_Fiction_by_Apasun.jpg
+#exec_always feh --bg-scale /home/pierre/Pictures/Daft_Fiction_by_Apasun.jpg
+exec_always feh --bg-scale /home/pierre/Pictures/nitish-meena-37745.jpg
 # Set screen prop
 exec_always --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --off --output DVI-I-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id compton -b
 exec --no-startup-id redshift
 
