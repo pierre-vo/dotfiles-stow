@@ -1,3 +1,8 @@
+if [ -f /usr/share/fzf/key-bindings.bash ]; then
+    . /usr/share/fzf/key-bindings.bash
+    . /usr/share/fzf/.completionbash
+fi
+
 # Aliases
 # #######
 
@@ -52,22 +57,12 @@ alias l='ls -CF'
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
-alias nano=emacs
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-alias viml="vim `ls -t | head -1`"
-alias screenl="screen -dRR"
-alias screens="screen -ls"
-alias screenr="screen -r"
-alias dspace="df -h"
-
 alias vnc7="vncserver :1 -geometry 1280x720"
 alias vnck="vncserver -kill :1"
-
-alias off="sudo shutdown -h now"
 
 alias yd="youtube-dl -f 45"
 
@@ -85,5 +80,8 @@ alias hyprestart="sudo service hyperion restart"
 
 alias weather="curl wttr.in"
 alias rain="curl v2.wttr.in"
+
+alias pacinst="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
+alias pacremo="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
 
 
