@@ -14,6 +14,7 @@ sudo pacman -Syu \
   python \
   python-pip \
   ranger \
-  vlc
+  vlc \
+  ncdu
 
 

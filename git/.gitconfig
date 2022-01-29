@@ -1,0 +1,13 @@
+[user]
+	email = 746601+pierre-vo@users.noreply.github.com
+	name = Pierre V.
+[credential]
+	helper = store
+[core]
+  editor = nvim
+[difftool]
+  prompt = true
+[diff]
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""

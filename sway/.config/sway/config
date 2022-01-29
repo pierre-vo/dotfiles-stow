@@ -46,7 +46,8 @@ exec wl-paste -t text --watch clipman store --notify
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 # exec --no-startup-id pulseaudio --start
 exec mako
-exec redshift -m wayland
+#exec redshift -m wayland
+exec gammastep -c .config/gammastep/gammastep.conf
 exec kanshi
 
 ### Idle configuration
