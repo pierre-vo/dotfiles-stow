@@ -270,6 +270,14 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+
+#
+# screenshots:
+#
+bindsym $mod+shift+s exec grim -g "$(slurp)" - | swappy -f -
+#bindsym $mod+shift+w exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | swappy -f -
+bindsym $mod+shift+w exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" -o ~/Images/Screenshots/$(date +'screenshot_%Y%m%d_%H%M%S.png')
+
 include "$HOME/.cache/wal/colors-sway"
 
 #

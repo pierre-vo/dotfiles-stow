@@ -1,20 +1,33 @@
 #!/bin/bash
 sudo pacman -Syu \
-  git \
-  stow \
   alacritty \
-  fish \
-  amd-ucode \
   base-devel \
-  meld \
-  neovim \
-  libreoffice-fresh \
   feh \
   firefox \
+  fish \
+  fzf \
+  git \
+  grim \
+  jq \
+  libreoffice-fresh \
+  meld \
+  ncdu \
+  neovim \
+  network-manager-applet \
+  noto-fonts-emoji \
+  pavucontrol \
   python \
   python-pip \
   ranger \
+  ripgrep \
+  slurp \
+  stow \
+  swappy \
   vlc \
-  ncdu
+  wl-clipboard
 
+#  amd-ucode \
+#  intel-ucode \
+#  intel-gpu-tools \
+#  libva-intel-driver \
 
