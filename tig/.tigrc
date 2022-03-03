@@ -1,0 +1,49 @@
+# https://github.com/jonas/tig/blob/master/tigrc
+
+set commit-order = default
+set horizontal-scroll = 33%
+set ignore-case = yes
+set line-graphics = utf-8
+set show-changes = yes
+set tab-size = 4
+set mouse = yes
+
+set blame-view	= id:yes,color file-name:auto author:abbreviated date:default,local=true line-number:yes,interval=1 text
+set grep-view	= file-name:no line-number:yes,interval=1 text
+set main-view	= line-number:no,interval=5 id:no date:relative-compact author:abbreviated,width=5 commit-title:yes,graph,refs,overflow=no
+set reflog-view	= line-number:no,interval=5 id:yes date:no author:no commit-title:yes,refs,overflow=no
+set refs-view	= line-number:no id:no date:default,local=true author:full ref commit-title
+set stash-view	= line-number:no,interval=5 id:no date:default,local=true author:full commit-title
+set status-view	= line-number:no,interval=5 status:short file-name
+set tree-view	= line-number:no,interval=5 mode author:abbreviated file-size date:default,local=true id:no file-name
+
+color  author        color14 default
+color  cursor        color7  color4  bold
+color  date          default default
+color  line-number   color14 color7
+color  title-blur    color10 color14
+color  title-focus   color15 color12 bold
+color  diff-header   color4  default bold
+color  diff-chunk    color3  default bold
+color  diff-del      color9  default
+color  search-result color15 color3  bold
+color  commit        color2  default bold
+
+color title-blur      color248 color241
+color title-focus     color255 color241 bold
+
+bind generic o  none
+bind generic oa :toggle author
+bind generic od :toggle date
+bind generic of :toggle file-name
+bind generic oF :toggle file-filter
+bind generic og :toggle line-graphics
+bind generic oG :toggle commit-title-graph
+bind generic oi :toggle id
+bind generic on :toggle line-number
+bind generic oo :toggle sort-order
+bind generic op :toggle ignore-space
+bind generic or :toggle commit-title-refs
+bind generic os :toggle sort-field
+bind generic ot :toggle commit-title-overflow
+
