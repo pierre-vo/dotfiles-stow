@@ -6,7 +6,7 @@
 [core]
 	editor = nvim
 	# editor = code --wait
-	autocrlf = true
+  # autocrlf = true
 	# Global ignore file (not shared)
 	excludesfile = ""
 [init]
