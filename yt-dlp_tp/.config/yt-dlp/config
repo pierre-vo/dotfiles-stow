@@ -1,0 +1,10 @@
+
+--embed-thumbnail
+--embed-metadata
+--embed-info-json
+
+-S vcodec:h264
+
+# Save all videos under YouTube directory in your home directory
+-o ~/Videos/Youtube/%(title)s.%(ext)s
+
