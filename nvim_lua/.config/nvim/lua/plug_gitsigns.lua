@@ -27,13 +27,13 @@ require('gitsigns').setup {
     ['o ih'] = ':<C-U>lua require"gitsigns".select_hunk()<CR>',
     ['x ih'] = ':<C-U>lua require"gitsigns".select_hunk()<CR>'
   },
-  watch_index = {
+  watch_gitdir = {
     interval = 1000
   },
   current_line_blame = false,
   sign_priority = 6,
   update_debounce = 200,
   status_formatter = nil, -- Use default
-  use_decoration_api = true,
-  use_internal_diff = true,  -- If luajit is present
+  --use_decoration_api = true,
+  --diff_opts.internal = true,  -- If luajit is present
 }
