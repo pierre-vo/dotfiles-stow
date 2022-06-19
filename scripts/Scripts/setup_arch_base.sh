@@ -1,8 +1,7 @@
 #!/bin/bash
 sudo pacman -Syu \
-  alacritty \
+  android-file-transfer \
   base-devel \
-  feh \
   firefox \
   fish \
   fzf \
@@ -13,9 +12,7 @@ sudo pacman -Syu \
   meld \
   ncdu \
   neovim \
-  network-manager-applet \
   noto-fonts-emoji \
-  pavucontrol \
   python \
   python-pip \
   ranger \

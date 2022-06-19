@@ -5,7 +5,7 @@ sudo pacman -Syu \
   kanshi \
   mako \
   picom \
-  swayidl \
+  swayidle \
   waybar \
   wofi
 
