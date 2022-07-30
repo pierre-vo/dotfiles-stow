@@ -1,0 +1,223 @@
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 34, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "sway/window"
+    ],
+    "modules-right": [
+        // "upower",
+        "bluetooth",
+        // "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "temperature",
+        "backlight",
+        "battery",
+        "clock",
+        "tray"
+    ], // "battery#bat2", 
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": []
+        }
+    },
+    "sway/mode": {
+        "format": " <span style=\"italic\">{}</span>"
+    },
+    "sway/window": {
+        "max-length": 50,
+        "rewrite": {
+            "^(.*) — Mozilla Firefox$": "🌎 $1",
+            "^nvim (.*) (.*)$": "<span size=\"larger\"></span> $1 [$2]",
+            "^fish (.*)$": "<span size=\"larger\"></span> [$1]"
+        }
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "Europe/Paris",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ﬙",
+        "tooltip": false,
+        "on-click-right": "foot -e gotop"
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
+    "backlight": {
+        // "device": "acpi_video1", 
+        "format": "{percent}% {icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+        //"format-icons": ["", ""],
+        "on-click": "light -S 50",
+        "on-click-middle": "light -S 25",
+        "on-click-right": "light -S 75",
+        "on-scroll-up": "light -A 1",
+        "on-scroll-down": "light -U 1"
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        // "format": "{capacity}% <span size=\"larger\">{icon}</span>",
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ﮣ",
+        "format-alt": "{power}W / {time} <span size=\"larger\">{icon}</span>",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+            // "",
+            // "",
+            // "",
+            // "",
+            // ""
+        ],
+        "design-capacity": false
+    },
+    //    "battery#bat2": {
+    //        "bat": "BAT1"
+    //    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " {signalStrength}% 直",
+        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "睊",
+        "format-alt": "{essid} 直",
+        "on-click-right": "foot -e nmtui",
+        "tooltip-format": "{ipaddr} - {frequency} - 祝{bandwidthUpOctets} {bandwidthDownOctets}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": "ﱝ {icon} {format_source}",
+        "format-muted": "ﱝ {format_source}",
+        "format-source": "",
+        // "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "phone": "",
+            "car": "",
+            "default": [
+                "奄",
+                "奔",
+                "墳"
+            ]
+        },
+        "on-click": "pavucontrol",
+        "max-length": 10
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-on": "",
+        "format-off": "",
+        "format-disabled": "",  // an empty format will hide the module
+        "format-connected": "", // {device_alias}
+        "format-connected-battery": " {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "blueman-manager",
+        "on-click-right": "foot -e sudo systemctl start bluetooth.service",
+        "on-click-middle": "foot -e sudo systemctl stop bluetooth.service"
+    }
+    // "bluetooth": {
+    //     // "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
+    //     "format": " {status}",
+    //     "format-disabled": "NA2", // an empty format will hide the module
+    //     "format-connected": " {num_connections} connected",
+    //     "tooltip-format": "{controller_alias}\t{controller_address}",
+    //     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    //     "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    // }
+    // "upower": {
+    //     "icon-size": 15,
+    //     "hide-if-empty": false,
+    //     "tooltip": true,
+    //     "tooltip-spacing": 20
+    // }
+    // "custom/media": {
+    //     "format": "{icon} {}",
+    //     "return-type": "json",
+    //     "max-length": 40,
+    //     "format-icons": {
+    //         "spotify": "",
+    //         "default": "🎜"
+    //     },
+    //     "escape": true,
+    //     "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    //     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    // }
+}
+// vim: ft=jsonc
