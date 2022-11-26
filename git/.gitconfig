@@ -1,97 +1,109 @@
 [user]
-	email = 746601+pierre-vo@users.noreply.github.com
-	name = Pierre V
+  email = 746601+pierre-vo@users.noreply.github.com
+  name = Pierre V
 [credential]
-	helper = store
+  helper = store
 [core]
-	editor = nvim
-	# editor = code --wait
+  editor = nvim
+  # editor = code --wait
   # autocrlf = true
-	# Global ignore file (not shared)
-	excludesfile = ""
+  # Global ignore file (not shared)
+  excludesfile = ""
+  pager = delta
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [pull]
-	rebase = false
+  rebase = false
 [fetch]
-	prune = false
-	recurseSubmodules = on-demand
+  prune = true
+  recurseSubmodules = on-demand
 [rebase]
-	autoStash = false
+  autoStash = false
 [difftool]
-	prompt = true
+  prompt = true
 [diff]
-	tool = nvimdiff
-	# Use better, descriptive initials (c, i, w) instead of a/b.
-	mnemonicPrefix = true
-	# Show renames/moves as such
-	renames = true
-	# Display submodule-related information (commit listings)
-	submodule = log
-	# external = git-diffsitter
+  tool = nvimdiff
+  # Use better, descriptive initials (c, i, w) instead of a/b.
+  mnemonicPrefix = true
+  # Show renames/moves as such
+  renames = true
+  # Display submodule-related information (commit listings)
+  submodule = log
+  # external = git-diffsitter
 [diff "pandoc"]
-	textconv = pandoc --to=markdown
-	prompt = false
+  textconv = pandoc --to=markdown
+  prompt = false
 [difftool]
-	prompt = true
+  prompt = true
 [difftool "nvimdiff"]
-	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 [difftool "diffsitter"]
-	cmd = "diffsitter \"$REMOTE\" \"$LOCAL\""
+  cmd = "diffsitter \"$REMOTE\" \"$LOCAL\""
 [grep]
-	break = true
-	heading = true
-	lineNumber = true
-	# Consider most regexes to be ERE
-	extendedRegexp = true
+  break = true
+  heading = true
+  lineNumber = true
+  # Consider most regexes to be ERE
+  extendedRegexp = true
 [log]
-	# Use abbrev SHAs whenever possible/relevant instead of full 40 chars
-	abbrevCommit = true
-	# Automatically --follow when given a single path
-	follow = true
-	# Disable decorate for reflog
-	# (because there is no dedicated `reflog` section available)
-	decorate = false
+  # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+  abbrevCommit = true
+  # Automatically --follow when given a single path
+  follow = true
+  # Disable decorate for reflog
+  # (because there is no dedicated `reflog` section available)
+  decorate = false
 [status]
-	# Display submodule rev change summaries in status
-	submoduleSummary = true
-	# Recursively traverse untracked directories to display all contents
-	showUntrackedFiles = all
+  # Display submodule rev change summaries in status
+  submoduleSummary = true
+  # Recursively traverse untracked directories to display all contents
+  showUntrackedFiles = all
 [tag]
-	# Sort tags as version numbers whenever applicable, so 1.10.2 is AFTER 1.2.0.
-	sort = version:refname
+  # Sort tags as version numbers whenever applicable, so 1.10.2 is AFTER 1.2.0.
+  sort = version:refname
+[interactive]
+  diffFilter = delta --color-only
+[add.interactive]
+  useBuiltin = false # required for git 2.37.0
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
 [alias]
-	co = checkout
-	ci = commit
-	st = status -sb
-	br = branch
-	desci = describe --match IntelisCP*
-	dev = switch development
-	fet = fetch -p -t
-	hist = log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short
-	lo = log -1
-	graph = "!f() { git log --oneline --abbrev-commit --graph --decorate; }; f"
-	last = log -1 HEAD --stat
-	type = cat-file -t
-	dump = cat-file -p
-	suu = submodule update
-	suf = submodule update --force
-	sui = submodule update --init --recursive
-	suc = submodule foreach --recursive 'git clean -xfd && git gc && git lfs prune'
-	hide = update-index --assume-unchanged
-	unhide = update-index --no-assume-unchanged
-	chkhide = update-index --really-refresh
-	alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
-	clang = ! git diff -U0 --no-color HEAD^ | python /c/App/LLVM/share/clang/clang-format-diff.py -p1 -i
-	wdiff = diff --word-diff=color --unified=1
-	d = diff
-	dv = difftool -t vimdiff -y
-	rv = remote -v
-	se = !git rev-list --all | xargs git grep -F
-	graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
+  co = checkout
+  ci = commit
+  st = status -sb
+  br = branch
+  desci = describe --match IntelisCP*
+  dev = switch development
+  fet = fetch -p -t
+  hist = log --graph --pretty=format:'%Cred%h%Creset %ad %s %C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --date=short
+  lo = log -1
+  graph = "!f() { git log --oneline --abbrev-commit --graph --decorate; }; f"
+  last = log -1 HEAD --stat
+  type = cat-file -t
+  dump = cat-file -p
+  suu = submodule update
+  suf = submodule update --force
+  sui = submodule update --init --recursive
+  suc = submodule foreach --recursive 'git clean -xfd && git gc && git lfs prune'
+  hide = update-index --assume-unchanged
+  unhide = update-index --no-assume-unchanged
+  chkhide = update-index --really-refresh
+  alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  clang = ! git diff -U0 --no-color HEAD^ | python /c/App/LLVM/share/clang/clang-format-diff.py -p1 -i
+  wdiff = diff --word-diff=color --unified=1
+  d = diff
+  dv = difftool -t vimdiff -y
+  rv = remote -v
+  se = !git rev-list --all | xargs git grep -F
+  graphviz = "!f() { echo 'digraph git {' ; git log --pretty='format:  %h -> { %p }' \"$@\" | sed 's/[0-9a-f][0-9a-f]*/\"&\"/g' ; echo '}'; }; f"
 [color]
-	ui = true
-	diff = true
-	status = true
-	branch = true
-	interactive = true
+  ui = true
+  diff = true
+  status = true
+  branch = true
+  interactive = true
