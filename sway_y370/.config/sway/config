@@ -24,6 +24,9 @@ set $term foot
 #set $menu j4-dmenu-desktop --dmenu=bemenu-run --term='alacritty'
 set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
 
+# Font
+font pango:FiraCode Nerd Font 9
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -31,6 +34,8 @@ set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
 output * bg /home/pierre/Images/Wallpapers/Solarized_cron.png fill
 
 output eDP-1 scale 1.25
+output HDMI-A-2 scale 1.1
+output DP-1 scale 1.1
 
 #
 # Example configuration:
@@ -56,6 +61,7 @@ exec mako
 exec gammastep -c .config/gammastep/gammastep.conf
 exec_always pkill kanshi; exec kanshi
 exec rot8 -k -i 0.2
+#exec_always i3-focus-last server
 
 ### Idle configuration
 #
@@ -101,8 +107,8 @@ input type:touchpad {
     #pointer_accel 0.5 # set mouse sensitivity (between -1 and 1)
 }
 
-input "1:1:AT_Translated_Set_2_keyboard" {
-#input type:keyboard { 
+#input "1:1:AT_Translated_Set_2_keyboard" {
+input type:keyboard { 
     xkb_layout us(intl)
     xkb_options caps:escape_shifted_capslock,shift:breaks_caps
     #xkb_variant ,nodeadkeys
@@ -115,6 +121,12 @@ input "1386:20639:Wacom_Pen_and_multitouch_sensor_Finger" {
 
 input "1386:20639:Wacom_Pen_and_multitouch_sensor_Pen" {
   map_to_output eDP-1
+}
+
+input "30788:30069:xiudi_XD75" {
+    events enabled
+    xkb_layout us(intl)
+    xkb_options caps:escape_shifted_capslock,shift:breaks_caps
 }
 
 ### Key bindings
@@ -137,19 +149,20 @@ input "1386:20639:Wacom_Pen_and_multitouch_sensor_Pen" {
 
     # clipboard
     bindsym $mod+n exec clipman pick -t wofi
+    bindsym $mod+shift+v exec clipman pick -t wofi
 
     # Set program location
     set $alacritty_colorscheme ~/.local/bin/alacritty-colorscheme
     set $alacritty_themes ~/Prog/alacritty-theme/themes
 
     # Toggle between light and dark colorscheme
-    bindsym $mod+Shift+n exec $alacritty_colorscheme -C $alacritty_themes -t solarized_light.yaml solarized_dark.yaml
+    #bindsym $mod+Shift+n exec $alacritty_colorscheme -C $alacritty_themes -t solarized_light.yaml solarized_dark.yaml
 
     # Toggle between all available colorscheme
-    bindsym $mod+Shift+m exec $alacritty_colorscheme -C $alacritty_themes -T
+    #bindsym $mod+Shift+m exec $alacritty_colorscheme -C $alacritty_themes -T
 
     # Get notification with current colorscheme
-    bindsym $mod+Shift+b exec notify-send "Alacritty Colorscheme" `$alacritty_colorscheme -s`
+    #bindsym $mod+Shift+b exec notify-send "Alacritty Colorscheme" `$alacritty_colorscheme -s`
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -187,6 +200,10 @@ input "1386:20639:Wacom_Pen_and_multitouch_sensor_Pen" {
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+    # Switch to the last used window
+    #bindsym $mod+Tab exec i3-focus-last
+
 #
 # Workspaces:
 #
@@ -319,17 +336,21 @@ bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 
 # Screen modes. Note mirroring is not yet properly supported by sway :(
-set $mode_display AUX SCREEN: (l) LEFT (r) RIGHT (o) OFF (m) MIRROR
+set $mode_display AUX SCREEN: (l) LEFT (r) RIGHT (o) OFF (m) MIRROR / LAPTOP SCREEN (d) DISABLED
 mode "$mode_display" {
     bindsym l output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos -$native_width 0, mode "default"
     bindsym r output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos $native_width 0, mode "default"
     bindsym m output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos 0 0, mode "default"
     bindsym o output $scr_aux disable, mode "default"
+    bindsym d output eDP-1 disable, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+x mode "$mode_display"
+
+# Class id with fixed behaviors
+for_window [app_id="nmtui"] floating enable
 
 include /etc/sway/config.d/*
