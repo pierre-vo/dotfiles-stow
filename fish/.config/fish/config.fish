@@ -2,5 +2,9 @@ set fish_greeting
 
 fish_add_path ~/.local/bin
 
-set MOZ_ENABLE_WAYLAND 1
+alias ip="ip --color"
+alias gparted="sudo --preserve-env=XDG_RUNTIME_DIR,WAYLAND_DISPLAY gparted"
+alias usbmount="sudo mount -o rw,gid=984,uid=1000 --target /mnt/USB"
 
+set MOZ_ENABLE_WAYLAND 1
+set XDG_SCREENSHOTS_DIR ~/Images/Screenshots
