@@ -6,11 +6,12 @@
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces",
-        "sway/mode"
-    ],
-    "modules-center": [
+        "sway/mode",
         "sway/window"
     ],
+    //"modules-center": [
+    //    "sway/window"
+    //],
     "modules-right": [
         // "upower",
         "bluetooth",

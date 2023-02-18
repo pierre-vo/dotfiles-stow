@@ -35,7 +35,7 @@ output * bg /home/pierre/Images/Wallpapers/Solarized_cron.png fill
 
 output eDP-1 scale 1.25
 output HDMI-A-2 scale 1.1
-output DP-1 scale 1.1
+output "Unknown G34WQC 20492B001912" scale 1.1 mode --custom 3440x1440@60Hz
 
 #
 # Example configuration:
@@ -297,9 +297,12 @@ bindsym $mod+r mode "resize"
 #
 # screenshots:
 #
-bindsym $mod+shift+s exec grim -g "$(slurp)" - | swappy -f -
+#bindsym $mod+shift+s exec grim -g "$(slurp)" - | swappy -f -
 #bindsym $mod+shift+w exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" - | swappy -f -
-bindsym $mod+shift+w exec grim -g "$(swaymsg -t get_tree | jq -r '.. | select(.pid? and .visible?) | .rect | "\(.x),\(.y) \(.width)x\(.height)"' | slurp)" -o ~/Images/Screenshots/$(date +'screenshot_%Y%m%d_%H%M%S.png')
+
+bindsym $mod+shift+s exec grimshot --notify save area - | swappy -f -
+bindsym $mod+shift+w exec grimshot --notify save window
+
 
 #include "$HOME/.cache/wal/colors-sway"
 
@@ -336,11 +339,12 @@ bindsym XF86MonBrightnessUp exec light -A 5
 bindsym XF86MonBrightnessDown exec light -U 5
 
 # Screen modes. Note mirroring is not yet properly supported by sway :(
-set $mode_display AUX SCREEN: (l) LEFT (r) RIGHT (o) OFF (m) MIRROR / LAPTOP SCREEN (d) DISABLED
+set $mode_display AUX SCREEN: (l) LEFT (r) RIGHT (o) OFF (m) MIRROR (g) G34WQC / LAPTOP SCREEN (d) DISABLED
 mode "$mode_display" {
     bindsym l output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos -$native_width 0, mode "default"
     bindsym r output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos $native_width 0, mode "default"
     bindsym m output $scr_aux enable, output $scr_main pos 0 0, output $scr_aux pos 0 0, mode "default"
+    bindsym g output DP-1 enable, output DP-1 mode --custom 3440x1440@60Hz
     bindsym o output $scr_aux disable, mode "default"
     bindsym d output eDP-1 disable, mode "default"
 

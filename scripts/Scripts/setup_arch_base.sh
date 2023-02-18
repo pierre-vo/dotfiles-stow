@@ -9,6 +9,7 @@ sudo pacman -Syu \
   grim \
   jq \
   libreoffice-fresh \
+  man-db \
   meld \
   ncdu \
   neovim \
