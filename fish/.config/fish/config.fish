@@ -10,6 +10,12 @@ set LIBVA_DRIVER_NAME nvidia
 
 #set MOZ_ENABLE_WAYLAND 1
 set MOZ_DISABLE_RDD_SANDBOX 1
+set -gx GPG_TTY (tty)
 
 set XDG_SCREENSHOTS_DIR ~/Images/Screenshots
 
+set hydro_color_prompt magenta
+set hydro_color_git green
+set hydro_color_pwd blue
+
+#pyenv init - | source

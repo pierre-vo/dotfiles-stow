@@ -1,9 +1,18 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+#SETUVAR --export PYENV_ROOT:/home/pierre/\x2epyenv
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
-SETUVAR _fisher_plugins:jorgebucaran/fisher
+SETUVAR _fisher_jorgebucaran_2F_hydro_files:\x7e/\x2econfig/fish/functions/fish_mode_prompt\x2efish\x1e\x7e/\x2econfig/fish/functions/fish_prompt\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/hydro\x2efish
+SETUVAR _fisher_plugins:jorgebucaran/fisher\x1ejorgebucaran/hydro
 SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR _hydro_git_11867:main\u2022\x20
+SETUVAR _hydro_git_13768:base\x2ddev\u2022\x20
+SETUVAR _hydro_git_1823:p\x2dsil\u2022\x20
+SETUVAR _hydro_git_19016:\x40cb663fe\u2022\x20
+SETUVAR _hydro_git_19746:main\u2022\x20
+SETUVAR _hydro_git_3144:base\x2dcube\u2022\x20
+SETUVAR _hydro_git_54344:base\x2dpio\x2dmbed\u2022\x20
 SETUVAR fish_color_autosuggestion:586e75
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:93a1a1
