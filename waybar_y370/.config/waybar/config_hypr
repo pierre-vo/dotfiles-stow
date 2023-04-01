@@ -5,12 +5,12 @@
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "sway/window"
+        "wlr/workspaces",
+        "wlr/mode",
+        "wlr/window"
     ],
     //"modules-center": [
-    //    "sway/window"
+    //    "wlr/window"
     //],
     "modules-right": [
         // "upower",
@@ -26,7 +26,7 @@
         "clock",
         "tray"
     ], // "battery#bat2", 
-    "sway/workspaces": {
+    "wlr/workspaces": {
         "disable-scroll": true,
         "persistent_workspaces": {
             "1": [],
@@ -34,10 +34,10 @@
             "3": []
         }
     },
-    "sway/mode": {
+    "wlr/mode": {
         "format": " <span style=\"italic\">{}</span>"
     },
-    "sway/window": {
+    "wlr/window": {
         "max-length": 50,
         "rewrite": {
             "^(.*) — Mozilla Firefox$": "🌎 $1",
