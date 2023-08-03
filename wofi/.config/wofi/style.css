@@ -22,7 +22,7 @@
 window {
     margin: 0px;
     border: 2px solid #586e75;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: #073642;
     font-family: Hack, Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -50,6 +50,7 @@ window {
     margin: 0px;
     border: none;
     background-color: #073642;
+    border-radius: 10px;
 }
 
 #scroll {

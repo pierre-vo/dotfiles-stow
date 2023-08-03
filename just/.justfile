@@ -1,5 +1,13 @@
 set shell := ["bash", "-uc"]
 
+bold    := '\033[1m'
+normal  := '\033[0m'
+green   := "\\e[32m"
+yellow  := "\\e[33m"
+blue    := "\\e[34m"
+magenta := "\\e[35m"
+grey    := "\\e[90m"
+
 default:
   @just --list
 
@@ -42,4 +50,8 @@ virt_start:
 virt_stop:
   sudo systemctl stop libvirtd
   sudo systemctl disable libvirtd
+
+mount_dirty_ntfs DISK='/dev/sda2':
+   sudo ntfsfix -d {{DISK}}
+   sudo mount -o rw,gid=984,uid=100 --target /mnt/USB {{DISK}}
 

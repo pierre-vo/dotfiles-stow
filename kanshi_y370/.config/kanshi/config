@@ -1,14 +1,14 @@
-profile {
+profile HDMI {
 	output eDP-1 disable
-	output HDMI-A-2 position 0,0
+	output HDMI-A-2 enable scale 1.1 mode 3440x1440@44Hz position 0,0
 }
 
-profile {
-	output eDP-1 disable
-	output "Unknown G34WQC 20492B001912" mode --custom 3440x1440@60Hz position 0,0
+profile G34WQC {
+	output eDP-1 disable 
+	output "GIGA-BYTE TECHNOLOGY CO., LTD. G34WQC 20492B001912" enable scale 1.1 mode 3440x1440 position 0,0
 }
 
-profile {
-	output eDP-1 enable
+profile undocked {
+	output eDP-1 enable scale 1.25
 }
 

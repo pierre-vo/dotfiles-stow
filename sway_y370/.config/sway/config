@@ -31,11 +31,12 @@ font pango:FiraCode Nerd Font 9
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-output * bg /home/pierre/Images/Wallpapers/Solarized_cron.png fill
+output * bg /home/pierre/Images/Wallpapers/wallpaper_current.png fit #0d3642
 
 output eDP-1 scale 1.25
-output HDMI-A-2 scale 1.1
-output "Unknown G34WQC 20492B001912" scale 1.1 mode --custom 3440x1440@60Hz
+#output HDMI-A-2 scale 1.1 mode --custom 3440x1440@44Hz
+#output DP-1 scale 1.1 mode --custom 3440x1440@60Hz
+output "GIGA-BYTE TECHNOLOGY CO., LTD. G34WQC 20492B001912" scale 1.1 mode --custom 3440x1440@60Hz
 
 #
 # Example configuration:
@@ -61,6 +62,7 @@ exec mako
 exec gammastep -c .config/gammastep/gammastep.conf
 exec_always pkill kanshi; exec kanshi
 exec rot8 -k -i 0.2
+exec /usr/lib/polkit-kde-authentication-agent-1
 #exec_always i3-focus-last server
 
 ### Idle configuration
