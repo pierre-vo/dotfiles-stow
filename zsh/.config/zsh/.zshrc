@@ -37,6 +37,11 @@ source ${ZDOTDIR}/plugins/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
+# Clone zsh-autosuggestions if necessary
+if [[ ! -f ${ZDOTDIR}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+  command git clone https://github.com/zsh-users/zsh-autosuggestions ${ZDOTDIR}/plugins/zsh-autosuggestions
+fi
+source ${ZDOTDIR}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 
 
@@ -45,6 +50,33 @@ source ${ZDOTDIR}/plugins/powerlevel10k/powerlevel10k.zsh-theme
 
 
 
+
+
+
+
+# Clone zsh-syntax-highlighting if necessary, must be last
+if [[ ! -f ${ZDOTDIR}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
+  command git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZDOTDIR}/plugins/zsh-syntax-highlighting
+fi
+source ${ZDOTDIR}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+# Aliases
+alias ip="ip --color"
+alias gparted="sudo --preserve-env=XDG_RUNTIME_DIR,WAYLAND_DISPLAY gparted"
+alias ls='exa --icons'
+alias ll='exa --header --icons --group --time-style=long-iso --git -l'
+alias la='exa --all --header --icons --group --time-style=long-iso --git -l'
+alias usbmount="sudo mount -o rw,gid=984,uid=1000 --target /mnt/USB"
+alias mntNixos="sudo mount /dev/nvme0n1p8 /mnt/Nixos"
+
+# Key binds
+bindkey "^[[1;3C" forward-word
+bindkey "^[[1;3D" backward-word
 
 # done profiling
 [[ -z "$ZPROFRC" ]] || zprof
