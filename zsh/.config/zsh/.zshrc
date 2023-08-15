@@ -77,6 +77,8 @@ alias mntNixos="sudo mount /dev/nvme0n1p8 /mnt/Nixos"
 # Key binds
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # done profiling
 [[ -z "$ZPROFRC" ]] || zprof
