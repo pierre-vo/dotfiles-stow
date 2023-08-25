@@ -5,6 +5,7 @@ sudo pacman -Syu \
   kanshi \
   mako \
   picom \
+  polkit-kde-agent \
   swayidle \
   waybar \
   wofi

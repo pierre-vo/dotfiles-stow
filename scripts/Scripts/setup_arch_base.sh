@@ -7,6 +7,9 @@ sudo pacman -Syu \
   fzf \
   git \
   grim \
+  hunspell \
+  hunspell-de \
+  hunspell-fr \
   jq \
   libreoffice-fresh \
   man-db \
@@ -14,6 +17,7 @@ sudo pacman -Syu \
   ncdu \
   neovim \
   noto-fonts-emoji \
+  pacman-contrib \
   python \
   python-pip \
   ranger \
@@ -28,4 +32,5 @@ sudo pacman -Syu \
 #  intel-ucode \
 #  intel-gpu-tools \
 #  libva-intel-driver \
-
+#  mkinitcpio-firmware \
+#  #upd72020x-fw \

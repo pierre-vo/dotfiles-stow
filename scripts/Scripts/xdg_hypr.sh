@@ -5,8 +5,8 @@
 
 set -eu
 
-export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
-export XDG_SESSION_DESKTOP=sway # systemd
+export XDG_CURRENT_DESKTOP=Hyprland # xdg-desktop-portal
+export XDG_SESSION_DESKTOP=Hyprland # systemd
 export XDG_SESSION_TYPE=wayland # xdg/systemd
 
 if command -v dbus-update-activation-environment >/dev/null; then
@@ -19,8 +19,8 @@ systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_
 
 # use systemd-run here, because systemd units inherit variables from ~/.config/environment.d
 # shellcheck disable=SC2068
-systemd-run --quiet --unit=sway --user --wait sway $@
-systemctl --user stop sway-session.target
+systemd-run --quiet --unit=Hyprland --user --wait Hyprland $@
+#systemctl --user stop sway-session.target
 
 # this teardown makes it easier to switch between compositors
 unset DISPLAY SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
