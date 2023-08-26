@@ -21,6 +21,11 @@ arch_clean_aur:
 arch_clean:
   paru -Scc
 
+# flatpack update and clean
+flat:
+  flatpak update
+  flatpak uninstall --unused
+
 # open .justfile
 nv_just:
   nvim ~/.justfile
@@ -70,3 +75,5 @@ zsh_plugupd:
    git -C {{zdot_dir}}/plugins/zsh-autosuggestions pull
    git -C {{zdot_dir}}/plugins/zsh-syntax-highlighting pull
 
+mount_data:
+   sudo mount -o rw,gid=984,uid=1000 --target /mnt/Data /dev/nvme0n1p5

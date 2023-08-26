@@ -25,6 +25,9 @@ sudo pacman -Syu \
   slurp \
   stow \
   swappy \
+  tmux \
+  udiskie \
+  udisks2 \
   vlc \
   wl-clipboard
 
@@ -34,3 +37,6 @@ sudo pacman -Syu \
 #  libva-intel-driver \
 #  mkinitcpio-firmware \
 #  #upd72020x-fw \
+#
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+

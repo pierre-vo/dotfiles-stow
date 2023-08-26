@@ -60,10 +60,11 @@ exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/cli
 exec mako
 #exec redshift -m wayland
 exec gammastep -c .config/gammastep/gammastep.conf
-exec_always pkill kanshi; exec kanshi
+exec_always sleep 1s && pkill kanshi; exec kanshi
 exec rot8 -k -i 0.2
 exec /usr/lib/polkit-kde-authentication-agent-1
 #exec_always i3-focus-last server
+exec udiskie -a -n --smart-tray
 
 ### Idle configuration
 #
